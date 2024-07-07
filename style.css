@@ -1,0 +1,89 @@
+
+@import url(https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap);
+
+:root{
+    --clr-neon:#14f7ff;
+    --clr-bg:#001414;
+    --font-size:3rem;
+}
+*,
+*::after,
+*::brfore{
+    box-sizing: border-box;
+}
+
+body{
+    min-height: 100vh;
+    display: grid;
+    place-items: centre;
+    background: var(--clr-bg);
+    color:var(--clr-neon);
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    overflow: hidden;
+}
+ 
+.neon {
+    margin: 0 auto; /* Centers the element horizontally */
+    font-size: calc(var(--font-size) * 0.75); /* Reduces the font size by 25% */
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    border: var(--clr-neon) 0.125rem solid;
+    padding: 0.25rem 1rem;
+    border-radius: 0.25rem;
+    text-shadow:
+        0 0 0.5rem var(--clr-neon),
+        0 0 0.5rem var(--clr-neon);
+    box-shadow: 
+        inset 0 0 0.5rem var(--clr-neon),
+        0 0 0.5rem var(--clr-neon);
+}
+
+/* Additional CSS to center the element */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+.neon::before{
+    content: "";
+    position: absolute;
+    top: 140%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--clr-neon);
+    transform: 
+    perspective(0.2rem)
+    rotateX('10deg')
+    scale(1.3, 0.40);
+    filter: blur(0.5rem);
+    pointer-events: none;
+    transition: opacity 100ms linear;
+}
+.neon::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    left: 0;
+   bottom: 0;
+   background: var(--clr-neon);
+   box-shadow: 0 0 2rem var(--clr-neon);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 100ms linear;
+    
+}
+.neon:hover::after{
+    opacity: 1;
+}
+.neon:hover,.neon:focus{
+    color:white;
+}
+.neon:hover::before{
+    opacity: 0.8;
+}
